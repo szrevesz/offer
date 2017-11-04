@@ -56,6 +56,7 @@ public class OfferManagerTest {
 	@Test
 	public void updateOffer() {
 		when(offerRepository.findOne(ID)).thenReturn(OFFER);
+		when(offerRepository.save(OFFER)).thenReturn(OFFER);
 
 		Offer offer = offerManager.update(ID, GOODS_UPDATED, DESCRIPTION_UPDATED, PRICE_UPDATED, CURRENCY_UPDATED);
 		
