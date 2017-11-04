@@ -4,7 +4,7 @@ public class Offer {
 	private Long id;
 	
 	private String goods;
-	
+
 	private String description;
 	
 	private Double price;
@@ -36,5 +36,21 @@ public class Offer {
 	
 	public String getCurrency() {
 		return currency;
+	}
+
+	public void setGoods(String goods) {
+		this.goods = goods;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
 	}
 }

@@ -19,6 +19,15 @@ public class OfferManager {
 	}
 	
 	public Offer update(Long id, String goods, String description, Double price, String currency) {
-		return null;
+		Offer offer = offerRepository.findOne(id);
+		if (offer != null) {
+			offer.setGoods(goods);
+			offer.setDescription(description);
+			offer.setPrice(price);
+			offer.setCurrency(currency);
+			
+			offer = offerRepository.save(offer);
+		}
+		return offer;
 	}
 }
