@@ -35,6 +35,7 @@ public class OfferControllerTest {
 	private static final String CURRENCY_UPDATED = "EUR";
 
 	private static final Offer OFFER = new Offer(GOODS, DESCRIPTION, PRICE, CURRENCY);
+	private static final Offer OFFER_UPDATE = new Offer(GOODS_UPDATED, DESCRIPTION_UPDATED, PRICE_UPDATED, CURRENCY_UPDATED);;
 	
 	@Autowired
 	private OfferController offerController;
@@ -66,8 +67,11 @@ public class OfferControllerTest {
 	
 	@Test
 	public void updateOffer() throws Exception {
+		when(offerManager.update(ID, GOODS_UPDATED, DESCRIPTION_UPDATED, PRICE_UPDATED, CURRENCY_UPDATED)).thenReturn(OFFER_UPDATE);
+		
 		//Action
 		ResultActions result = mvc.perform(post("/api/offer")
+				.param("id", ID.toString())
 				.param("goods", GOODS_UPDATED)
 				.param("description", DESCRIPTION_UPDATED)
 				.param("price", PRICE_UPDATED.toString())
