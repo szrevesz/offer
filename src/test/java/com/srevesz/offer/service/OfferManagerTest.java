@@ -1,9 +1,8 @@
 package com.srevesz.offer.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
-
-import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -43,7 +42,7 @@ public class OfferManagerTest {
 	@Test
 	public void saveOffer() {
 		//mocking the repository
-		when(offerRepository.save(GOODS, DESCRIPTION, PRICE, CURRENCY)).thenReturn(OFFER);
+		when(offerRepository.save(any(Offer.class))).thenReturn(OFFER);
 		
 		Offer offer = offerManager.save(GOODS, DESCRIPTION, PRICE, CURRENCY);
 		

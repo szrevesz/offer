@@ -1,7 +1,5 @@
 package com.srevesz.offer.controller;
 
-import static org.mockito.Matchers.anyDouble;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -37,7 +35,6 @@ public class OfferControllerTest {
 	private static final String CURRENCY_UPDATED = "EUR";
 
 	private static final Offer OFFER = new Offer(GOODS, DESCRIPTION, PRICE, CURRENCY);
-	private static final Offer OFFER_UPDATE = new Offer(GOODS_UPDATED, DESCRIPTION_UPDATED, PRICE_UPDATED, CURRENCY_UPDATED);
 	
 	@Autowired
 	private OfferController offerController;

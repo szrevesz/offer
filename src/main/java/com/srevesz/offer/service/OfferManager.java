@@ -15,7 +15,8 @@ public class OfferManager {
 	}
 	
 	public Offer save(String goods, String description, Double price, String currency) {
-		return offerRepository.save(goods, description, price, currency);
+		Offer offer = new Offer(goods, description, price, currency);
+		return offerRepository.save(offer);
 	}
 	
 	public Offer update(Long id, String goods, String description, Double price, String currency) {

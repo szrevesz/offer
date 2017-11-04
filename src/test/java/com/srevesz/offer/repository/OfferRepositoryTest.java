@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.srevesz.offer.model.Offer;
@@ -26,9 +27,13 @@ public class OfferRepositoryTest {
 	@Autowired
 	private OfferRepository offerRepository;
 	
+	@Autowired
+    private TestEntityManager entityManager;
+	
 	@Test
 	public void savingAndFind() {
-		Offer offer = offerRepository.save(GOODS, DESCRIPTION, PRICE, CURRENCY);
+		Offer offer = new Offer(GOODS, DESCRIPTION, PRICE, CURRENCY);
+		offer = offerRepository.save(offer);
 		
 		Offer foundOffer = offerRepository.findOne(offer.getId());
 		
@@ -42,7 +47,8 @@ public class OfferRepositoryTest {
 	@Test
 	public void savingUpdatingAndFind() {
 		//creating
-		Offer offer = offerRepository.save(GOODS, DESCRIPTION, PRICE, CURRENCY);
+		Offer offer = new Offer(GOODS, DESCRIPTION, PRICE, CURRENCY);
+		offer = offerRepository.save(offer);
 		
 		//updating
 		offer.setGoods(GOODS_UPDATED);

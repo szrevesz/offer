@@ -1,6 +1,13 @@
 package com.srevesz.offer.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Offer {
+	@Id
+	@GeneratedValue
 	private Long id;
 	
 	private String goods;
@@ -11,6 +18,10 @@ public class Offer {
 	
 	private String currency;
 
+	public Offer() {
+		// default constructor
+	}
+	
 	public Offer(String goods, String description, Double price, String currency) {
 		this.goods = goods;
 		this.description = description;
