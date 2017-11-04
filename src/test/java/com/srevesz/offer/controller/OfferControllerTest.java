@@ -1,5 +1,8 @@
 package com.srevesz.offer.controller;
 
+import static org.mockito.Matchers.anyDouble;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -11,9 +14,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
+
+import com.srevesz.offer.model.Offer;
+import com.srevesz.offer.service.OfferManager;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(OfferController.class)
@@ -29,14 +36,22 @@ public class OfferControllerTest {
 	private static final Double PRICE_UPDATED = 89.99;
 	private static final String CURRENCY_UPDATED = "EUR";
 
+	private static final Offer OFFER = new Offer(GOODS, DESCRIPTION, PRICE, CURRENCY);
+	private static final Offer OFFER_UPDATE = new Offer(GOODS_UPDATED, DESCRIPTION_UPDATED, PRICE_UPDATED, CURRENCY_UPDATED);
+	
 	@Autowired
 	private OfferController offerController;
+	
+	@MockBean
+	private OfferManager offerManager;
 	
 	@Autowired
 	private MockMvc mvc;
 	
 	@Test
 	public void createOffer() throws Exception {
+		when(offerManager.save(GOODS, DESCRIPTION, PRICE, CURRENCY)).thenReturn(OFFER);
+		
 		//Action
 		ResultActions result = mvc.perform(put("/api/offer")
 				.param("goods", GOODS)
@@ -53,7 +68,7 @@ public class OfferControllerTest {
 	}
 	
 	@Test
-	public void updateOffer() throws Exception {	
+	public void updateOffer() throws Exception {
 		//Action
 		ResultActions result = mvc.perform(post("/api/offer")
 				.param("goods", GOODS_UPDATED)
