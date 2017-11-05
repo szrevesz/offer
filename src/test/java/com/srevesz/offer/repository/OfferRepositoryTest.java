@@ -1,6 +1,9 @@
 package com.srevesz.offer.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+
+import java.util.Arrays;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -70,4 +73,16 @@ public class OfferRepositoryTest {
 		assertThat(CURRENCY_UPDATED.equals(foundOffer.getCurrency()));
 	}
 	
+	@Test
+	public void savingMoreOffersAndFindAll() {
+		Offer offer = new Offer(GOODS, DESCRIPTION, PRICE, CURRENCY);
+		offer = offerRepository.save(offer);
+	
+		Offer offer2 = new Offer(GOODS_UPDATED, DESCRIPTION_UPDATED, PRICE_UPDATED, CURRENCY_UPDATED);
+		offer2 = offerRepository.save(offer2);
+		
+		Iterable<Offer> offers = offerRepository.findAll();
+		
+		assertEquals(offers, Arrays.asList(offer, offer2));
+	}
 }

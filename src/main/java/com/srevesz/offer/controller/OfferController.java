@@ -27,5 +27,17 @@ public class OfferController {
 		Offer offer = offerManager.save(goods, description, price, currency);
 		return offer;
 	}
+	
+	@RequestMapping(value="/api/offer", method = RequestMethod.POST)
+	public Offer update(
+			@RequestParam("id") Long id,
+			@RequestParam("goods") String goods,
+			@RequestParam("description") String description,
+			@RequestParam("price") Double price,
+			@RequestParam("currency") String currency
+	) {
+		Offer offer = offerManager.update(id,goods, description, price, currency);
+		return offer;
+	}
 
 }

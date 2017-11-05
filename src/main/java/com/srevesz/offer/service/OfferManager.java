@@ -31,4 +31,18 @@ public class OfferManager {
 		}
 		return offer;
 	}
+	
+	public void delete(Long id) {
+		//TODO
+	}
+	
+	public Offer find(Long id) {
+		//TODO
+		return null;
+	}
+	
+	public Iterable<Offer> findAll() {
+		//TODO
+		return null;
+	}
 }

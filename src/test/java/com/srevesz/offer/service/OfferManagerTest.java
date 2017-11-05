@@ -1,8 +1,16 @@
 package com.srevesz.offer.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
+import java.sql.Array;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -28,6 +36,7 @@ public class OfferManagerTest {
 	private static final String CURRENCY_UPDATED = "EUR";
 	
 	private static final Offer OFFER = new Offer(GOODS, DESCRIPTION, PRICE, CURRENCY);
+	private static final Offer OFFER_UPDATED = new Offer(GOODS_UPDATED, DESCRIPTION_UPDATED, PRICE_UPDATED, CURRENCY_UPDATED);
 	
 	private OfferManager offerManager;
 	
@@ -73,5 +82,35 @@ public class OfferManagerTest {
 		Offer offer = offerManager.update(ID, GOODS_UPDATED, DESCRIPTION_UPDATED, PRICE_UPDATED, CURRENCY_UPDATED);
 		
 		assertThat(offer == null);
+	}
+	
+	@Test
+	public void deleteOffer() {
+		
+		offerManager.delete(ID);
+		
+		verify(offerRepository, times(1)).delete(ID);
+	}
+	
+	@Test
+	public void find() {
+		when(offerRepository.findOne(ID)).thenReturn(OFFER);
+		
+		Offer offer = offerManager.find(ID);
+		
+		assertThat(GOODS.equals(offer.getGoods()));
+		assertThat(DESCRIPTION.equals(offer.getDescription()));
+		assertThat(PRICE == offer.getPrice());
+		assertThat(CURRENCY.equals(offer.getCurrency()));
+	}
+	
+	@Test
+	public void findAll() {
+		List<Offer> OFFERS = Arrays.asList(OFFER, OFFER_UPDATED);
+		when(offerRepository.findAll()).thenReturn(OFFERS);
+		
+		Iterable<Offer> offers = offerManager.findAll();
+		
+		assertEquals(OFFERS, offers);
 	}
 }
