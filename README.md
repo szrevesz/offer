@@ -34,7 +34,7 @@ java -jar target/offer-0.0.1-SNAPSHOT.jar
 ## Tests
 
 ### Postman
-The Postman requests can be imported from `src/test/offer.postman_collection.json` https://github.com/szrevesz/offer/blob/master/src/test/srevesz/offer/offer.postman_collection.json
+The Postman requests can be imported from `src/test/postman/offer.postman_collection.json` https://github.com/szrevesz/offer/blob/master/src/test/postman/offer.postman_collection.json
 
 ### Using `curl` from command line
 
