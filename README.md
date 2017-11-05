@@ -32,22 +32,51 @@ java -jar target/offer-0.0.1-SNAPSHOT.jar
 6. In a browser try to open http://localhost:8080/api/offers, it should return an empty list
 
 ## Tests
-Using `curl`
+
+### Postman
+The Postman requests can be imported from `src/test/offer.postman_collection.json` https://github.com/szrevesz/offer/blob/master/src/test/srevesz/offer/offer.postman_collection.json
+
+### Using `curl` from command line
 
 #### Adding new offer
-```curl -X POST -d goods=Product%20One -d description=Buy%20me%20now -d price=199.99 -d currency=GBP http://localhost:8080/api/offer```
+```
+$ curl -X POST -d goods=Product%20One -d description=Buy%20me%20now -d price=199.99 -d currency=GBP http://localhost:8080/api/offer
+```
+Response:
+```
+{"id":1,"goods":"Product One","description":"Buy me now","price":199.99,"currency":"GBP"}
+```
 
-#### Modifying an offer
-```curl -X PUT -d id=1 goods=Product%20Two -d description=Buy%20me%20now -d price=100.99 -d currency=USD http://localhost:8080/api/offer```
+#### Updating an offer
+```
+$ curl -X PUT -d id=1 -d goods=Product%20Two -d description=Buy%20me%20now -d price=100.99 -d currency=USD http://localhost:8080/api/offer
+```
+Response:
+```
+{"id":1,"goods":"Product Two","description":"Buy me now","price":100.99,"currency":"USD"}
+```
 
 #### Deleting an offer
-```curl -X DELETE http://localhost:8080/api/offer/1```
+```$ curl -X DELETE http://localhost:8080/api/offer/1```
+Response is empty
 
 #### Get an offer
-```curl http://localhost:8080/api/offer/1```
+```
+$ curl http://localhost:8080/api/offer/1
+```
+Response is empty if the offer does not exist with that ID otherwise:
+```
+{"id":2,"goods":"Product One","description":"Buy me now","price":199.99,"currency":"GBP"}
+```
 
 #### Get all the offers
-```curl http://localhost:8080/api/offers```
+```
+$ curl http://localhost:8080/api/offers
+```
+Response an empty json array `[]` if there is no any offer otherwise
+```
+{"id":1,"goods":"Product One","description":"Buy me now","price":199.99,"currency":"GBP"},{"id":2,"goods":"Product Two","description":"Best offer ever","price":499.99,"currency":"EUR"}]
+```
 
 ## MVN test
 After running the `mvn clean test` command there was no any error:
