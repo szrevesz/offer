@@ -1,0 +1,207 @@
+{
+	"id": "79375694-f6fa-8b4c-464a-50dc8cac4dc6",
+	"name": "offer",
+	"description": "",
+	"order": [
+		"6df45aaa-5695-1931-f5a4-65ab4a2a7ba3",
+		"de02ad60-e338-88c9-c96b-90a121883a03",
+		"2cec056a-2fe3-049c-8c8b-576382da0e2f",
+		"9e7b50a1-477d-5f8b-b58f-bb9397e499cb"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1509838585161,
+	"owner": "1768942",
+	"public": false,
+	"hasRequests": true,
+	"requests": [
+		{
+			"id": "2cec056a-2fe3-049c-8c8b-576382da0e2f",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/api/offer/1",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "79375694-f6fa-8b4c-464a-50dc8cac4dc6",
+			"data": null,
+			"dataMode": "params",
+			"name": "find",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1509906535138,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collection_id": "79375694-f6fa-8b4c-464a-50dc8cac4dc6"
+		},
+		{
+			"id": "6df45aaa-5695-1931-f5a4-65ab4a2a7ba3",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/api/offer?goods=Product One&description=Buy me now&price=199.99&currency=GBP",
+			"queryParams": [
+				{
+					"key": "goods",
+					"value": "Product One",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "Buy me now",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "price",
+					"value": "199.99",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "currency",
+					"value": "GBP",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "goods",
+					"value": "Product one",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "It's a very nice product",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "price",
+					"value": "199.99",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "currency",
+					"value": "GBP",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1509906449709,
+			"name": "create",
+			"description": "",
+			"collectionId": "79375694-f6fa-8b4c-464a-50dc8cac4dc6",
+			"responses": [],
+			"collection_id": "79375694-f6fa-8b4c-464a-50dc8cac4dc6"
+		},
+		{
+			"id": "9e7b50a1-477d-5f8b-b58f-bb9397e499cb",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/api/offers",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1509906589057,
+			"name": "findAll",
+			"description": "",
+			"collectionId": "79375694-f6fa-8b4c-464a-50dc8cac4dc6",
+			"responses": [],
+			"collection_id": "79375694-f6fa-8b4c-464a-50dc8cac4dc6"
+		},
+		{
+			"id": "de02ad60-e338-88c9-c96b-90a121883a03",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/api/offer?id=1&goods=Product Two&description=Buy me now&price=100.99&currency=USD",
+			"queryParams": [
+				{
+					"key": "id",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "goods",
+					"value": "Product Two",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "Buy me now",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "price",
+					"value": "100.99",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "currency",
+					"value": "USD",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "79375694-f6fa-8b4c-464a-50dc8cac4dc6",
+			"data": null,
+			"dataMode": "params",
+			"name": "update",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1509906463504,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collection_id": "79375694-f6fa-8b4c-464a-50dc8cac4dc6"
+		}
+	]
+}
