@@ -51,7 +51,7 @@ public class OfferControllerTest {
 		when(offerManager.save(GOODS, DESCRIPTION, PRICE, CURRENCY)).thenReturn(OFFER);
 		
 		//Action
-		ResultActions result = mvc.perform(put("/api/offer")
+		ResultActions result = mvc.perform(post("/api/offer")
 				.param("goods", GOODS)
 				.param("description", DESCRIPTION)
 				.param("price", PRICE.toString())
@@ -70,7 +70,7 @@ public class OfferControllerTest {
 		when(offerManager.update(ID, GOODS_UPDATED, DESCRIPTION_UPDATED, PRICE_UPDATED, CURRENCY_UPDATED)).thenReturn(OFFER_UPDATE);
 		
 		//Action
-		ResultActions result = mvc.perform(post("/api/offer")
+		ResultActions result = mvc.perform(put("/api/offer")
 				.param("id", ID.toString())
 				.param("goods", GOODS_UPDATED)
 				.param("description", DESCRIPTION_UPDATED)
@@ -88,8 +88,7 @@ public class OfferControllerTest {
 	@Test
 	public void deleteOffer() throws Exception {
 		//Action
-		ResultActions result = mvc.perform(delete("/api/offer")
-				.param("id", ID.toString()));
+		ResultActions result = mvc.perform(delete("/api/offer/{id}", ID));
 		
 		//Checking the response
 		result.andExpect(status().isOk());

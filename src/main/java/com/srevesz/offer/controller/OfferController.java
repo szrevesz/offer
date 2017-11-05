@@ -1,5 +1,6 @@
 package com.srevesz.offer.controller;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +18,7 @@ public class OfferController {
 		this.offerManager = offerManager;
 	}
 	
-	@RequestMapping(value="/api/offer", method = RequestMethod.PUT)
+	@RequestMapping(value="/api/offer", method = RequestMethod.POST)
 	public Offer create(
 			@RequestParam("goods") String goods,
 			@RequestParam("description") String description,
@@ -28,7 +29,7 @@ public class OfferController {
 		return offer;
 	}
 	
-	@RequestMapping(value="/api/offer", method = RequestMethod.POST)
+	@RequestMapping(value="/api/offer", method = RequestMethod.PUT)
 	public Offer update(
 			@RequestParam("id") Long id,
 			@RequestParam("goods") String goods,
@@ -38,6 +39,25 @@ public class OfferController {
 	) {
 		Offer offer = offerManager.update(id,goods, description, price, currency);
 		return offer;
+	}
+	
+	@RequestMapping(value="/api/offer/{id}", method = RequestMethod.DELETE)
+	public void deleteOffer(
+			@PathVariable("id") Long id
+	) {
+		offerManager.delete(id);
+	}
+	
+	@RequestMapping(value="/api/offer/{id}", method = RequestMethod.GET)
+	public Offer find(
+			@PathVariable("id") Long id
+	) {
+		return offerManager.find(id);
+	}
+	
+	@RequestMapping(value="/api/offers", method = RequestMethod.GET)
+	public Iterable<Offer> findAll() {
+		return offerManager.findAll();
 	}
 
 }

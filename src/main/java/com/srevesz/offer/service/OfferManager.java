@@ -33,16 +33,14 @@ public class OfferManager {
 	}
 	
 	public void delete(Long id) {
-		//TODO
+		offerRepository.delete(id);
 	}
 	
 	public Offer find(Long id) {
-		//TODO
-		return null;
+		return offerRepository.findOne(id);
 	}
 	
 	public Iterable<Offer> findAll() {
-		//TODO
-		return null;
+		return offerRepository.findAll();
 	}
 }
